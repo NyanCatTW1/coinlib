@@ -26,7 +26,7 @@ Future<int> execWithStdio(
     await process.stdin.close();
   }
 
-  // Pipe stdout to terminal and stderr to /dev/null
+  // Pipe stdout to terminal and discard stderr
   await Future.wait([
     process.stdout.transform(utf8.decoder).forEach(stdout.write),
     process.stderr.drain(),
